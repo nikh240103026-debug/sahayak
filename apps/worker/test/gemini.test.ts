@@ -16,15 +16,15 @@ const reply = (text: string, extra: object = {}) =>
 
 describe("gemini adapter", () => {
   it("falls back from a Claude model name to the free Gemini default", () => {
-    expect(geminiModel("claude-sonnet-5-5")).toBe("gemini-2.5-flash");
-    expect(geminiModel("gemini-2.5-flash-lite")).toBe("gemini-2.5-flash-lite");
+    expect(geminiModel("claude-sonnet-5-5")).toBe("gemini-3.8-flash");
+    expect(geminiModel("gemini-3.8-flash-lite")).toBe("gemini-3.8-flash-lite");
   });
 
   it("parses a valid answer, sends the key in a header and reports zero cost", async () => {
     const fetchMock = vi.fn().mockResolvedValue(reply('{"ok":true}'));
     vi.stubGlobal("fetch", fetchMock);
-    const client = new GeminiLLMClient("k", "gemini-2.5-flash", "gemini-2.5-flash", 1);
-    const out = await client.call("t", "gemini-2.5-flash", z.object({ ok: z.boolean() }), "sys", [
+    const client = new GeminiLLMClient("k", "gemini-3.8-flash", "gemini-3.8-flash", 1);
+    const out = await client.call("t", "gemini-3.8-flash", z.object({ ok: z.boolean() }), "sys", [
       { text: "hi" },
     ]);
     expect(out.value).toEqual({ ok: true });

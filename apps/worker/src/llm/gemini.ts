@@ -16,7 +16,7 @@ import {
 } from "./types";
 
 /** Free-tier friendly default. Override with LLM_MODEL_AGENT / LLM_MODEL_FAST (for example gemini-2.5-flash-lite). */
-export const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
+export const DEFAULT_GEMINI_MODEL = "gemini-3.8-flash";
 
 /** A leftover Claude model name from the defaults is not a Gemini model, so fall back. */
 export function geminiModel(configured: string): string {
@@ -41,7 +41,7 @@ class GeminiHttpError extends Error {
 }
 
 const ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models";
-const MAX_ATTEMPTS = 4;
+const MAX_ATTEMPTS = 3;
 
 /** Plain-fetch adapter for the Gemini API (no extra dependency). Free tier needs no billing account. */
 export class GeminiLLMClient implements LLMClient {
