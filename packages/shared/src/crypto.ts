@@ -37,6 +37,10 @@ function decodeKey(b64: string, name: string): Buffer {
 
 export function loadKeyRing(env: NodeJS.ProcessEnv = process.env): KeyRing {
   const raw = env.ENCRYPTION_KEY;
+  console.log(
+    "[ENV DEBUG] crypto.ts ENCRYPTION_KEY:",
+    raw ? "FOUND" : "MISSING"
+  );
   if (!raw) throw new Error("ENCRYPTION_KEY is not set (run: npm run keygen)");
   const version = Number(env.ENCRYPTION_KEY_VERSION || "1");
   if (!Number.isInteger(version) || version < 1) throw new Error("ENCRYPTION_KEY_VERSION must be a positive integer");

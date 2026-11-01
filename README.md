@@ -53,7 +53,7 @@ Fill in `.env.local`:
 
 - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`.
 - `GRIEVANCE_EMAIL` and `SUPPORT_EMAIL`. The web app's environment check (`packages/shared/src/env.ts`) fails without them.
-- `ANTHROPIC_API_KEY`, or `LLM_DISABLED=true` to run without any model (you type your details; recovery is rule-based), or `LLM_FIXTURES=replay` to use the recorded responses.
+- `GEMINI_API_KEY` (free, with `LLM_PROVIDER=gemini` and the two model names set to `gemini-2.5-flash`), or `ANTHROPIC_API_KEY`, or `LLM_DISABLED=true` to run without any model (you type your details; recovery is rule-based), or `LLM_FIXTURES=replay` to use the recorded responses.
 - Optional: `WORKER_URL=http://localhost:8080` so new runs wake the worker at once. Without it the worker still finds runs by polling (every 3 seconds while busy, every 30 seconds when idle).
 
 Then:

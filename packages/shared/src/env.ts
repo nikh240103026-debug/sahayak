@@ -62,8 +62,9 @@ export const WorkerEnv = z
     ...crypto,
     ...portal,
     WORKER_SHARED_SECRET: secret("WORKER_SHARED_SECRET"),
-    LLM_PROVIDER: z.enum(["anthropic"]).default("anthropic"),
+    LLM_PROVIDER: z.enum(["anthropic", "gemini"]).default("anthropic"),
     ANTHROPIC_API_KEY: z.string().optional(),
+    GEMINI_API_KEY: z.string().optional(),
     LLM_MODEL_AGENT: z.string().default("claude-sonnet-5-5"),
     LLM_MODEL_FAST: z.string().default("claude-haiku-5-5"),
     LLM_DISABLED: bool,
@@ -78,10 +79,12 @@ export const WorkerEnv = z
     RETENTION_HOURS: posInt(24),
   })
   .superRefine((env, ctx) => {
-    if (!env.LLM_DISABLED && env.LLM_FIXTURES !== "replay" && !env.ANTHROPIC_API_KEY) {
+    const keyName = env.LLM_PROVIDER === "gemini" ? "GEMINI_API_KEY" : "ANTHROPIC_API_KEY";
+    const hasKey = env.LLM_PROVIDER === "gemini" ? env.GEMINI_API_KEY : env.ANTHROPIC_API_KEY;
+    if (!env.LLM_DISABLED && env.LLM_FIXTURES !== "replay" && !hasKey) {
       ctx.addIssue({
         code: "custom",
-        path: ["ANTHROPIC_API_KEY"],
+        path: [keyName],
         message: "required unless LLM_DISABLED=true (the assistant then uses manual entry only)",
       });
     }

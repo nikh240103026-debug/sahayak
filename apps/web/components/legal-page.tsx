@@ -14,7 +14,7 @@ function fill(text: string): string {
     .replaceAll("{grievanceEmail}", grievanceEmail)
     .replaceAll("{supportEmail}", supportEmail)
     .replaceAll("{retentionHours}", String(Number(process.env.RETENTION_HOURS ?? 24) || 24))
-    .replaceAll("{aiProvider}", process.env.LLM_PROVIDER === "anthropic" || !process.env.LLM_PROVIDER ? "Anthropic" : process.env.LLM_PROVIDER);
+    .replaceAll("{aiProvider}", process.env.LLM_PROVIDER === "gemini" ? "Google (Gemini)" : process.env.LLM_PROVIDER === "anthropic" || !process.env.LLM_PROVIDER ? "Anthropic" : process.env.LLM_PROVIDER);
 }
 
 export async function LegalPage({ slug }: { slug: LegalSlug }) {

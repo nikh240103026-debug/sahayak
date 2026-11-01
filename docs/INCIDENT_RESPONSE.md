@@ -65,7 +65,7 @@ New values are written with the new key; old values still decrypt with the previ
 
 **`CRON_SECRET`**: `npm run keygen`, update it in Vercel and redeploy. Vercel sends the new value to the retention cron automatically.
 
-**`ANTHROPIC_API_KEY`**: revoke it in the provider console, create a new one, update the worker.
+**`ANTHROPIC_API_KEY` / `GEMINI_API_KEY`**: revoke it in the provider console, create a new one, update the worker.
 
 **Others**: SMTP password (Supabase Auth settings), Google OAuth client secret, `DEMO_LOGIN_PASSWORD` (and set `NEXT_PUBLIC_ENABLE_DEMO_LOGIN=false`), GitHub and hosting account passwords and tokens.
 

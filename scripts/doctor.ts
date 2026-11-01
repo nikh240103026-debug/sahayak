@@ -20,6 +20,7 @@ const HINTS: Record<string, string> = {
   GRIEVANCE_EMAIL: "the Grievance Officer's address shown on the Grievances page",
   SUPPORT_EMAIL: "a general help address shown on the Grievances page",
   ANTHROPIC_API_KEY: "console.anthropic.com -> API keys, or set LLM_DISABLED=true to run without AI",
+  GEMINI_API_KEY: "aistudio.google.com -> Get API key (free), or set LLM_DISABLED=true to run without AI",
   WORKER_URL: "the public URL of your worker container, e.g. https://<space>.hf.space",
 };
 

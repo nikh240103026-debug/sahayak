@@ -126,7 +126,7 @@ All waits are bounded by `HUMAN_WAIT_MINUTES` (default 10, and the schema refuse
 
 **Submitting.** Only in the `submit` phase, only after a recorded approval. The submit request carries the run's `Idempotency-Key`; if a receipt already exists, the worker does not submit again.
 
-**The model adapter** (`apps/worker/src/llm/`): a provider-neutral `LLMClient`; Anthropic is the adapter. Outputs are JSON-schema-validated (Zod), with a 60-second timeout, SDK retries with backoff, and up to two extra attempts when output does not parse. `LLM_MODEL_FAST` reads documents; `LLM_MODEL_AGENT` proposes actions. Token use and estimated cost are logged per call and summed per run in `runs.llm_usage`. With `LLM_FIXTURES=replay` the worker uses recorded responses keyed by step and page situation (`llm/fixtures.ts`); `record` wraps the real client and writes `recorded.json`.
+**The model adapter** (`apps/worker/src/llm/`): a provider-neutral `LLMClient`; Anthropic and Gemini (plain fetch, free tier) are the adapters. Outputs are JSON-schema-validated (Zod), with a 60-second timeout, SDK retries with backoff, and up to two extra attempts when output does not parse. `LLM_MODEL_FAST` reads documents; `LLM_MODEL_AGENT` proposes actions. Token use and estimated cost are logged per call and summed per run in `runs.llm_usage`. With `LLM_FIXTURES=replay` the worker uses recorded responses keyed by step and page situation (`llm/fixtures.ts`); `record` wraps the real client and writes `recorded.json`.
 
 ## Extraction pipeline
 

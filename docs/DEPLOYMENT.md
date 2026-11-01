@@ -16,7 +16,7 @@ You need:
 
 - A GitHub account, a Supabase account and a Vercel account.
 - A place to run the worker: Render, Hugging Face Spaces, or a laptop with Docker for demo day.
-- An Anthropic API key, or the decision to run without a model (`LLM_DISABLED=true`).
+- A free Gemini API key from aistudio.google.com/apikey (no card needed), an Anthropic API key, or the decision to run without a model (`LLM_DISABLED=true`). Gemini's free tier may use prompts to improve Google's products, so use only the fictional sample documents with it.
 - Node.js 24 on your computer (22.12 is the minimum; `.nvmrc` pins 24).
 
 On your computer, in the repository folder:
@@ -130,7 +130,7 @@ Add these in **Settings, Environment Variables** (Production, and Preview if you
 | `DEMO_PORTAL_BASE_URL` | same as `NEXT_PUBLIC_SITE_URL` |
 | `ALLOWED_PORTAL_HOSTS` | leave empty (the demo portal host is always allowed) |
 | `ENABLE_REAL_PORTALS` | `false` |
-| `LLM_PROVIDER` | `anthropic` (the legal pages name the provider from this) |
+| `LLM_PROVIDER` | `anthropic` or `gemini` (the legal pages name the provider from this) |
 | `LLM_DISABLED` | `false`, or `true` to run without a model |
 | `RETENTION_HOURS` | `24` |
 | `MAX_RUNS_PER_USER_PER_DAY` | `5` |
@@ -182,7 +182,7 @@ The build context is the **repository root**: the Dockerfile copies `package.jso
 | `ALLOWED_PORTAL_HOSTS` | empty |
 | `ENABLE_REAL_PORTALS` | `false` |
 | `LLM_PROVIDER` | `anthropic` |
-| `ANTHROPIC_API_KEY` | your key (not needed with `LLM_DISABLED=true`) |
+| `ANTHROPIC_API_KEY` / `GEMINI_API_KEY` | the key for the provider you chose (not needed with `LLM_DISABLED=true`). For Gemini also set `LLM_MODEL_AGENT` and `LLM_MODEL_FAST` to `gemini-2.5-flash`. |
 | `LLM_MODEL_AGENT`, `LLM_MODEL_FAST` | as in `.env.example`, or the models you prefer |
 | `LLM_DISABLED` | same as Vercel |
 | `LLM_FIXTURES` | `off` |

@@ -6,7 +6,16 @@ import { dirname, join } from "node:path";
 
 const here = dirname(fileURLToPath(import.meta.url));
 // One .env.local at the repository root serves the web app, the worker and the scripts.
-loadEnvConfig(join(here, "../.."), process.env.NODE_ENV !== "production");
+loadEnvConfig(
+  join(here, "../.."),
+  process.env.NODE_ENV !== "production",
+  undefined,
+  true
+);
+console.log(
+  "[ENV DEBUG] next.config ENCRYPTION_KEY:",
+  process.env.ENCRYPTION_KEY ? "FOUND" : "MISSING"
+);
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 /** Static security headers. The per-request CSP (with a script nonce) is set in proxy.ts. */
