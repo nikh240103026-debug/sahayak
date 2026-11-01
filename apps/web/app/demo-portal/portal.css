@@ -1,0 +1,86 @@
+/* The fictional demo portal: deliberately dated, small, table-based. Scoped to .rcdp. */
+.rcdp {
+  min-height: 100dvh;
+  background: #e9ecef;
+  color: #222;
+  font-family: Verdana, Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.rcdp a { color: #0b3c8c; }
+.rcdp .rcdp-banner {
+  background: #b00020;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 6px 8px;
+  letter-spacing: 0.5px;
+  font-size: 13px;
+  border-bottom: 3px solid #ffd600;
+}
+.rcdp .rcdp-header {
+  background: linear-gradient(#24468a, #183366);
+  color: #fff;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.rcdp .rcdp-header .title { font-size: 18px; font-weight: bold; font-family: Georgia, serif; }
+.rcdp .rcdp-header .sub { font-size: 11px; opacity: 0.9; }
+.rcdp .rcdp-nav { background: #f5d76e; border-bottom: 1px solid #c9a227; padding: 4px 14px; }
+.rcdp .rcdp-nav a { color: #222; margin-right: 14px; font-weight: bold; text-decoration: none; }
+.rcdp .rcdp-nav a:hover { text-decoration: underline; }
+.rcdp main { max-width: 900px; margin: 12px auto; background: #fff; border: 1px solid #b7bec8; padding: 12px 14px 18px; }
+.rcdp h1 { font-size: 15px; color: #7a1020; border-bottom: 2px solid #7a1020; padding-bottom: 3px; margin: 4px 0 10px; font-family: Verdana, sans-serif; }
+.rcdp h2 { font-size: 13px; color: #183366; margin: 12px 0 6px; font-family: Verdana, sans-serif; }
+.rcdp table.form { width: 100%; border-collapse: collapse; }
+.rcdp table.form td { border: 1px solid #d0d5dc; padding: 5px 6px; vertical-align: top; }
+.rcdp table.form td.l { width: 38%; background: #f3f5f8; font-weight: bold; }
+.rcdp table.form label { display: block; }
+.rcdp .req { color: #b00020; }
+.rcdp input[type="text"], .rcdp input[type="password"], .rcdp select {
+  font: inherit;
+  padding: 3px 4px;
+  border: 1px solid #8a94a3;
+  width: 100%;
+  max-width: 320px;
+  background: #fffff4;
+  box-sizing: border-box;
+}
+.rcdp input[type="file"] { font: inherit; }
+.rcdp .btn {
+  font: inherit;
+  font-weight: bold;
+  background: linear-gradient(#f7f7f7, #d9d9d9);
+  border: 1px solid #777;
+  padding: 4px 14px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.rcdp .btn.primary { background: linear-gradient(#2f62b8, #1d438a); color: #fff; border-color: #163a7a; }
+.rcdp .actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+.rcdp .error-summary { border: 1px solid #b00020; background: #fdecee; color: #7a0014; padding: 6px 8px; margin-bottom: 10px; }
+.rcdp .error-summary ul { margin: 4px 0 0 18px; padding: 0; }
+.rcdp .info { border: 1px solid #2f62b8; background: #eef3fc; padding: 6px 8px; margin-bottom: 10px; }
+.rcdp .marquee { background: #fff8d6; border: 1px dashed #c9a227; padding: 4px 8px; margin-bottom: 10px; }
+.rcdp .steps { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+.rcdp .steps span { padding: 2px 6px; border: 1px solid #b7bec8; background: #f3f5f8; font-size: 11px; }
+.rcdp .steps span.on { background: #183366; color: #fff; border-color: #183366; }
+.rcdp .steps span.done { background: #dff0d8; }
+.rcdp table.list { width: 100%; border-collapse: collapse; }
+.rcdp table.list th, .rcdp table.list td { border: 1px solid #d0d5dc; padding: 4px 6px; text-align: left; }
+.rcdp table.list th { background: #183366; color: #fff; }
+.rcdp .captcha { font-family: "Courier New", monospace; background: #eee; border: 1px solid #999; padding: 4px 8px; display: inline-block; margin-bottom: 4px; }
+.rcdp .modal-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.45); display: flex; align-items: center; justify-content: center; z-index: 20; padding: 16px; }
+.rcdp .modal { background: #fff; border: 2px solid #7a1020; max-width: 460px; width: 100%; padding: 10px 12px; box-shadow: 0 6px 24px rgba(0,0,0,.35); }
+.rcdp .modal h2 { color: #7a1020; margin-top: 0; }
+.rcdp footer { max-width: 900px; margin: 0 auto 16px; font-size: 11px; color: #555; text-align: center; }
+.rcdp .tracking { font-family: "Courier New", monospace; font-size: 18px; font-weight: bold; color: #183366; }
+.rcdp .ok { border: 1px solid #3c763d; background: #dff0d8; padding: 8px; }
+@media (max-width: 520px) {
+  .rcdp table.form td { display: block; width: auto; }
+  .rcdp table.form td.l { border-bottom: none; }
+}

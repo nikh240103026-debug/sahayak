@@ -1,0 +1,101 @@
+{
+  "note": "Geography for the fictional demo portal. State and district names are real places; every institution is fictional and marked (Demo).",
+  "states": [
+    {
+      "code": "MH",
+      "name": "Maharashtra",
+      "districts": [
+        {
+          "code": "PUN",
+          "name": "Pune",
+          "institutions": [
+            "Shivneri Junior College of Science (Demo)",
+            "Deccan Arts and Commerce College (Demo)"
+          ]
+        },
+        {
+          "code": "NAG",
+          "name": "Nagpur",
+          "institutions": [
+            "Vidarbha Institute of Technology (Demo)",
+            "Sitabuldi College of Commerce (Demo)"
+          ]
+        },
+        {
+          "code": "NSK",
+          "name": "Nashik",
+          "institutions": ["Godavari Science College (Demo)"]
+        }
+      ]
+    },
+    {
+      "code": "KA",
+      "name": "Karnataka",
+      "districts": [
+        {
+          "code": "MYS",
+          "name": "Mysuru",
+          "institutions": ["Chamundi Degree College (Demo)"]
+        },
+        {
+          "code": "BGM",
+          "name": "Belagavi",
+          "institutions": ["Krishna Valley Institute (Demo)"]
+        },
+        {
+          "code": "BLR",
+          "name": "Bengaluru Urban",
+          "institutions": ["Cubbon Polytechnic (Demo)"]
+        }
+      ]
+    },
+    {
+      "code": "RJ",
+      "name": "Rajasthan",
+      "districts": [
+        {
+          "code": "JPR",
+          "name": "Jaipur",
+          "institutions": ["Amber Girls' College (Demo)"]
+        },
+        {
+          "code": "UDR",
+          "name": "Udaipur",
+          "institutions": ["Lake City Science College (Demo)"]
+        }
+      ]
+    },
+    {
+      "code": "UP",
+      "name": "Uttar Pradesh",
+      "districts": [
+        {
+          "code": "LKO",
+          "name": "Lucknow",
+          "institutions": ["Gomti Degree College (Demo)"]
+        },
+        {
+          "code": "VNS",
+          "name": "Varanasi",
+          "institutions": ["Ghat Road College of Arts (Demo)"]
+        }
+      ]
+    },
+    {
+      "code": "WB",
+      "name": "West Bengal",
+      "districts": [
+        {
+          "code": "KOL",
+          "name": "Kolkata",
+          "institutions": ["Hooghly Riverside College (Demo)"]
+        },
+        {
+          "code": "SLG",
+          "name": "Siliguri",
+          "institutions": ["Teesta Valley College (Demo)"]
+        }
+      ]
+    }
+  ]
+}

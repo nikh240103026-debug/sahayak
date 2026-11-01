@@ -1,0 +1,39 @@
+# Agent worker: host-agnostic container. Listens on $PORT, serves GET /health and POST /wake only.
+# The Playwright base image ships Chromium and its system libraries; its version must match
+# the `playwright` package version in apps/worker/package.json.
+
+FROM mcr.microsoft.com/playwright:v1.64.1-noble AS build
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY packages/shared/package.json packages/shared/package.json
+COPY apps/worker/package.json apps/worker/package.json
+COPY apps/web/package.json apps/web/package.json
+RUN npm ci -w @app/worker -w @app/shared --no-audit --no-fund
+COPY tsconfig.base.json ./
+COPY config config
+COPY packages/shared packages/shared
+COPY apps/worker apps/worker
+RUN npm run build -w @app/worker
+
+FROM mcr.microsoft.com/playwright:v1.64.1-noble
+ENV NODE_ENV=production \
+    PORT=8080 \
+    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright \
+    LLM_FIXTURES_DIR=/app/fixtures/llm
+# Devanagari fonts so Hindi receipts render correctly.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends fonts-noto-core \
+ && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+# Only the packages esbuild leaves external (keep versions in sync with apps/worker/package.json).
+RUN printf '{"name":"worker-runtime","private":true,"type":"module","dependencies":{"playwright":"1.64.1","unpdf":"2.1.0"}}' > package.json \
+ && npm install --omit=dev --no-audit --no-fund --ignore-scripts \
+ && npm cache clean --force
+COPY --from=build /app/apps/worker/dist ./dist
+COPY fixtures ./fixtures
+RUN chown -R pwuser:pwuser /app
+USER pwuser
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s \
+  CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||8080)+'/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+CMD ["node", "dist/server.js"]

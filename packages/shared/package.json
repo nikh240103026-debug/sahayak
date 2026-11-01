@@ -1,0 +1,20 @@
+{
+  "name": "@app/shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./crypto": "./src/crypto.ts",
+    "./hmac": "./src/hmac.ts",
+    "./env": "./src/env.ts",
+    "./services": "./src/services.ts",
+    "./brand": "./src/brand.ts",
+    "./demo-portal": "./src/demo-portal.ts",
+    "./pdf": "./src/pdf.ts"
+  },
+  "dependencies": {
+    "zod": "4.6.7",
+    "unpdf": "2.1.0"
+  }
+}

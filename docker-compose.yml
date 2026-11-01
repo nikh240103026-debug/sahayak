@@ -1,0 +1,43 @@
+# Local development and the demo-day fallback.
+#
+#   Worker only (pointed at your hosted Supabase project):  docker compose up worker
+#   Web + worker (local Supabase via `npx supabase start`):  docker compose --profile full up
+#
+# Both read .env.local. With a local Supabase, set NEXT_PUBLIC_SUPABASE_URL=http://host.docker.internal:54321
+# for the containers (and http://127.0.0.1:54321 in your browser-facing NEXT_PUBLIC_* if you run web outside Docker).
+
+services:
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    env_file: .env.local
+    environment:
+      PORT: "8080"
+      # The worker's browser reaches the demo portal on the web app running on your machine.
+      DEMO_PORTAL_BASE_URL: ${DEMO_PORTAL_BASE_URL_FOR_DOCKER:-http://host.docker.internal:3000}
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    shm_size: "1gb"
+    restart: unless-stopped
+
+  web:
+    profiles: ["full"]
+    image: node:24-bookworm-slim
+    working_dir: /app
+    command: sh -c "npm ci --no-audit --no-fund && npm run dev -w @app/web -- --hostname 0.0.0.0"
+    env_file: .env.local
+    environment:
+      NEXT_TELEMETRY_DISABLED: "1"
+    volumes:
+      - .:/app
+      - web_node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  web_node_modules: {}

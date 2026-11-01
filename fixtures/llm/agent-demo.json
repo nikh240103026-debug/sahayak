@@ -1,0 +1,86 @@
+{
+  "propose:start_application:dialog": [
+    {
+      "type": "click",
+      "target_name": "I have read the notice",
+      "field": null,
+      "format": null,
+      "value": null,
+      "url": null,
+      "key": null,
+      "doc": null,
+      "wait_ms": null,
+      "reason": "A notice dialog covers the page; close it before opening the form.",
+      "suspicious_page_instructions": true
+    },
+    {
+      "type": "finish",
+      "target_name": null,
+      "field": null,
+      "format": null,
+      "value": null,
+      "url": null,
+      "key": null,
+      "doc": null,
+      "wait_ms": null,
+      "reason": "The notice is closed; the form link can be used now.",
+      "suspicious_page_instructions": false
+    }
+  ],
+  "propose:personal:alert:date-of-birth-enter-the-date-exactly-as-dd-mm-yyyy-for-examp": [
+    {
+      "type": "fill",
+      "target_name": "Date of Birth",
+      "field": "date_of_birth",
+      "format": "dd/mm/yyyy",
+      "value": null,
+      "url": null,
+      "key": null,
+      "doc": null,
+      "wait_ms": null,
+      "reason": "The portal wants the date as DD/MM/YYYY.",
+      "suspicious_page_instructions": false
+    },
+    {
+      "type": "finish",
+      "target_name": null,
+      "field": null,
+      "format": null,
+      "value": null,
+      "url": null,
+      "key": null,
+      "doc": null,
+      "wait_ms": null,
+      "reason": "Date re-entered in the requested format; ready to save again.",
+      "suspicious_page_instructions": false
+    }
+  ],
+  "propose:academic:alert:percentage-of-marks-enter-the-percentage-with-exactly-two-de": [
+    {
+      "type": "fill",
+      "target_name": "Percentage of Marks",
+      "field": "previous_percentage",
+      "format": "fixed2",
+      "value": null,
+      "url": null,
+      "key": null,
+      "doc": null,
+      "wait_ms": null,
+      "reason": "The portal needs exactly two decimal places.",
+      "suspicious_page_instructions": false
+    },
+    {
+      "type": "finish",
+      "target_name": null,
+      "field": null,
+      "format": null,
+      "value": null,
+      "url": null,
+      "key": null,
+      "doc": null,
+      "wait_ms": null,
+      "reason": "Percentage re-entered; ready to save again.",
+      "suspicious_page_instructions": false
+    }
+  ]
+}
